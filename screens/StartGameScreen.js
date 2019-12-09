@@ -4,11 +4,11 @@ import { View, Text, StyleSheet, TextInput, Button } from "react-native"
 const StartGameScreen = props => {
     return (
         <View style={styles.screen}>
-            <Text style={styles.title}>The Game Screen!</Text>
+            <Text style={styles.title}>Start a New Game!</Text>
             <View style={styles.inputContainer}>
                 <Text>Select a Number</Text>
                 <TextInput />
-                <View styles={styles.buttonContainer}>
+                <View style={styles.buttonContainer}>
                     <Button title="Reset" onPress={() => { }} />
                     <Button title="Guess" onPress={() => { }} />
                 </View>
@@ -41,7 +41,16 @@ const styles = StyleSheet.create({
         width: 300,
         maxWidth: '80%',
         //center items horizontally on cross axis
-        alignItems: 'center'
+        alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 6,
+        shadowOpacity: 0.26,
+        backgroundColor: 'white',
+        elevation: 8,
+        padding: 20,
+        borderRadius: 10
+
     }
 })
 
