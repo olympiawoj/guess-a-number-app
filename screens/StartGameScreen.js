@@ -1,18 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native"
+import Card from "../components/Card"
 
 const StartGameScreen = props => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Start a New Game!</Text>
-            <View style={styles.inputContainer}>
+            <Card style={styles.inputContainer}>
                 <Text>Select a Number</Text>
                 <TextInput />
                 <View style={styles.buttonContainer}>
                     <Button title="Reset" onPress={() => { }} />
                     <Button title="Guess" onPress={() => { }} />
                 </View>
-            </View>
+            </Card>
         </View>
     )
 }
