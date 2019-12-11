@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert, Dimensions } from "react-native"
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert, Dimensions, ScrollView } from "react-native"
 import Card from "../components/Card"
 import Colors from "../constants/colors"
 import Input from "../components/Input"
@@ -45,36 +45,40 @@ const StartGameScreen = props => {
                     {selectedNumber}
                 </NumberContainer>
                 <MainButton onPress={() => props.onStartGame(selectedNumber)} >START GAME</MainButton>
-            </Card>)
+            </Card>
+
+        )
     }
 
     return (
-        <TouchableWithoutFeedback
-            onPress={() => Keyboard.dismiss()}>
-            <View style={styles.screen}>
-                <TitleText style={styles.title}>Start a New Game!</TitleText>
-                <Card style={styles.inputContainer}>
-                    <BodyText>Select a Number</BodyText>
-                    <Input
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        blurOnSubmit
-                        keyboardType="number-pad"
-                        maxLength={2}
-                        style={styles.input}
-                        value={enteredValue}
-                        onChangeText={numberInputHandler}
-                    />
-                    <View style={styles.buttonContainer}>
-                        <View style={styles.button}>
-                            <Button color={Colors.accent} title="Reset" onPress={resetInputHandler} /></View>
-                        <View style={styles.button}>
-                            <Button color={Colors.primary} title="Guess" onPress={confirmInputHandler} /></View>
-                    </View>
-                </Card>
-                {confirmedOutput}
-            </View>
-        </TouchableWithoutFeedback>
+        <ScrollView>
+            <TouchableWithoutFeedback
+                onPress={() => Keyboard.dismiss()}>
+                <View style={styles.screen}>
+                    <TitleText style={styles.title}>Start a New Game!</TitleText>
+                    <Card style={styles.inputContainer}>
+                        <BodyText>Select a Number</BodyText>
+                        <Input
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            blurOnSubmit
+                            keyboardType="number-pad"
+                            maxLength={2}
+                            style={styles.input}
+                            value={enteredValue}
+                            onChangeText={numberInputHandler}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <View style={styles.button}>
+                                <Button color={Colors.accent} title="Reset" onPress={resetInputHandler} /></View>
+                            <View style={styles.button}>
+                                <Button color={Colors.primary} title="Guess" onPress={confirmInputHandler} /></View>
+                        </View>
+                    </Card>
+                    {confirmedOutput}
+                </View>
+            </TouchableWithoutFeedback>
+        </ScrollView>
     )
 }
 
