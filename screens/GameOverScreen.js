@@ -3,6 +3,8 @@ import React from "react"
 import { View, Image, StyleSheet, Button, Text } from "react-native"
 import BodyText from "../components/BodyText"
 import TitleText from "../components/TitleText"
+import MainButton from "../components/MainButton"
+
 import Colors from "../constants/colors"
 
 const GameOverScreen = (props) => {
@@ -13,7 +15,7 @@ const GameOverScreen = (props) => {
                 <Image
                     fadeDuration={100}
                     style={styles.image}
-                    source={{ uri: 'https://goodstock.photos/wp-content/uploads/2017/11/Snow-Covered-Mountain-Peak.jpg' }}
+                    source={require('../assets/success.png')}
                     resizeMode="cover" />
             </View>
             <View style={styles.resultContainer}>
@@ -22,7 +24,7 @@ const GameOverScreen = (props) => {
 
 
             </View>
-            <Button style={styles.button} title="NEW GAME" onPress={props.onRestart} />
+            <MainButton style={styles.button} onPress={props.onRestart} >NEW GAME</MainButton>
         </View>
     )
 }
