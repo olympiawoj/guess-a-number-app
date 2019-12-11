@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
-import { View, Text, StyleSheet, Button, Alert } from "react-native"
+import { View, Text, StyleSheet, Button, Alert, ScrollView } from "react-native"
 import NumberContainer from "../components/NumberContainer"
 import Card from "../components/Card"
 import MainButton from "../components/MainButton"
@@ -19,8 +19,10 @@ const generateRandomBetween = (min, max, exclude) => {
 }
 
 const GameScreen = props => {
-    const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, props.userChoice))
-    const [rounds, setRounds] = useState(0)
+
+    const initialGuess = generateRandomBetween(1, 100, props.userChoice)
+    const [currentGuess, setCurrentGuess] = useState(initialGuess)
+    const [pastGuesses, setPastGuesses] = useState([initialGuess])
 
     //initial boundaries that we'll update depending on nextGuessHandler
     const currentLow = useRef(1)
@@ -30,9 +32,9 @@ const GameScreen = props => {
 
     useEffect(() => {
         if (currentGuess === userChoice) {
-            onGameOver(rounds)
+            onGameOver(pastGuesses.length)
         }
-    }, [currentGuess, userChoice, onGameOver])
+    }, [currentGuess, userChoice, pastGuesses])
 
 
     const nextGuessHandler = direction => {
@@ -50,11 +52,12 @@ const GameScreen = props => {
             //If I'm telling you the computer that the # you guessed is too big and you shoudl guess a lower one, then I know this # which I guessed is my current high
             currentHigh.current = currentGuess
         } else {
-            currentLow.current = currentGuess
+            //add 1 to insure new lower boundary which is included in rando # generation is 1 higher than current guess
+            currentLow.current = currentGuess + 1
         }
         const nextNumber = generateRandomBetween(currentLow.current, currentHigh.current, currentGuess)
         setCurrentGuess(nextNumber)
-        setRounds(curRounds => curRounds + 1)
+        setPastGuesses(curPastGuesses => [nextNumber, ...curPastGuesses])
     }
 
     return (
@@ -68,12 +71,14 @@ const GameScreen = props => {
                     <Ionicons name="md-remove" size={24} color="white" />
                 </MainButton>
 
-
                 <MainButton onPress={nextGuessHandler.bind(this, 'greater')} >
                     <Ionicons name="md-add" size={24} color="white" />
                 </MainButton>
 
             </Card>
+            <ScrollView>
+                {pastGuesses.map((guess) => <View key={guess}><Text>{guess}</Text></View>)}
+            </ScrollView>
         </View>
     )
 }
