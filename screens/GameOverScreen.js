@@ -9,6 +9,7 @@ import Colors from "../constants/colors"
 
 const GameOverScreen = (props) => {
     return (
+
         <ScrollView>
             <View style={styles.screen}>
                 <TitleText>Game is over!</TitleText>
@@ -28,6 +29,7 @@ const GameOverScreen = (props) => {
                 <MainButton style={styles.button} onPress={props.onRestart} >NEW GAME</MainButton>
             </View>
         </ScrollView>
+
     )
 }
 

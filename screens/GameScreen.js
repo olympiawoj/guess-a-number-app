@@ -6,7 +6,7 @@ import MainButton from "../components/MainButton"
 import BodyText from "../components/BodyText"
 import DefaultStyles from "../constants/default-styles"
 import { Ionicons } from '@expo/vector-icons'
-import { ScreenOrientation } from 'expo'
+// import { ScreenOrientation } from 'expo'
 
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min)
@@ -29,7 +29,7 @@ const renderListItem = (listLength, itemData) => (
 
 const GameScreen = props => {
 
-    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+    // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
 
     const initialGuess = generateRandomBetween(1, 100, props.userChoice)
     const [currentGuess, setCurrentGuess] = useState(initialGuess)
