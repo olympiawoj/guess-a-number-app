@@ -1,6 +1,6 @@
 # Guess A Number App
 
-❓Guess A Number built with React Native, which runs on iOS and Android
+❓Guess A Number App built with React Native, which runs on iOS and Android
 
 
 ## Table of Contents
