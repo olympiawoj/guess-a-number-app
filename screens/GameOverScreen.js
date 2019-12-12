@@ -35,16 +35,17 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingVertical: 10
     },
     image: {
         width: '100%',
         height: '100%'
     },
     imageContainer: {
-        width: Dimensions.get('window').width * 0.7,
-        height: Dimensions.get('window').width * 0.7,
-        borderRadius: (Dimensions.get('window').width * 0.7) / 2,
+        width: Dimensions.get('window').width * 0.4,
+        height: Dimensions.get('window').width * 0.4,
+        borderRadius: (Dimensions.get('window').width * 0.4) / 2,
         borderWidth: 3,
         borderColor: 'black',
         overflow: 'hidden',
